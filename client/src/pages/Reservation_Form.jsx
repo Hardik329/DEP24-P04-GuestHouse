@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-import FormControl from "@mui/material/FormControl";
-import { TextField } from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem, Checkbox, ListItemText, TextField } from "@mui/material";
 import "./Reservation_Form.css";
 import { updateFilledPDF } from "../utils/generatePDF";
 import InputFileUpload from "../components/uploadFile";
@@ -24,6 +23,7 @@ function ReservationForm() {
 
   const [showTC, setShowTC] = useState(false);
   const [showCat, setShowCat] = useState(false);
+  const [subRole, setSubRole] = useState('');
 
   useEffect(() => {
     setShowCat(false);
@@ -104,6 +104,38 @@ function ReservationForm() {
 
   const catCReviewers = ["CHAIRMAN"];
   const catDReviewers = ["CHAIRMAN"];
+
+  const roomFareA = {
+    'Single Occupancy': 0,
+    'Double Occupancy': 0
+  }
+  const roomFareB = {
+    'Single Occupancy': 600,
+    'Double Occupancy': 850
+  }
+  const roomFareC = {
+    'Single Occupancy': 900,
+    'Double Occupancy': 1250
+  }
+  const roomFareD = {
+    'Single Occupancy': 1300,
+    'Double Occupancy': 1800
+  }
+
+  const catReviewers = {
+    "A" : catAReviewers,
+    "B" : catBReviewers,
+    "C" : catCReviewers,
+    "D" : catDReviewers
+  }
+
+  const roomFare = {
+    "A" : roomFareA,
+    "B" : roomFareB,
+    "C" : roomFareC,
+    "D" : roomFareD
+  }
+
   const [checkedValues, setCheckedValues] = useState([]);
   console.log(checkedValues);
   const handleChange = (e) => {
@@ -123,6 +155,11 @@ function ReservationForm() {
         prevCheckedValues.filter((item) => item !== value)
       );
     }
+  };
+
+  const handleSubRoleChange = (event) => {
+    setSubRole(event.target.value);
+    // You can handle the sub-role selection here if needed
   };
 
   const handleFileUpload = (files) => {
@@ -379,24 +416,6 @@ function ReservationForm() {
           />
 
           <div className="form-group">
-            <label>Room Type*</label>
-
-            <select
-              name="roomType"
-              className="w-full h-12 border rounded-md border-gray-300 p-2 whitespace-pre"
-              onChange={handleChange}
-              value={formData.roomType}
-            >
-              <option className="" value="Single Occupancy">
-                Single Occupancy
-              </option>
-              <option className="" value="Double Occupancy">
-                Double Occupancy
-              </option>
-            </select>
-          </div>
-
-          <div className="form-group">
             <label>Arrival Date*:</label>
             <input
               type="date"
@@ -488,87 +507,63 @@ function ReservationForm() {
               </option>
             </select>
 
+            <div className="form-group">
+              <label>Room Type*</label>
+
+              <select
+                name="roomType"
+                className="w-full h-12 border rounded-md border-gray-300 p-2 whitespace-pre"
+                onChange={handleChange}
+                value={formData.roomType}
+              >
+                <option className="" value="Single Occupancy">
+                  {formData.category !== 'A' &&  <span>Single Occupancy (Rs.{roomFare[formData.category]['Single Occupancy']}/- only)</span>}
+                  {formData.category === 'A' &&  <span>Single Occupancy (Free)</span>}
+                  
+                </option>
+                <option className="" value="Double Occupancy">
+                  {formData.category !== 'A' && <span>Double Occupancy (Rs.{roomFare[formData.category]['Double Occupancy']}/- only)</span>}
+                  {formData.category === 'A' && <span>Double Occupancy (Free)</span>}
+                </option>
+              </select>
+            </div>
+
             <div className="w-full p-2 mb-5">
-              <ul className="flex flex-col justify-center">
-                {formData.category === "A" &&
-                  catAReviewers.map((reviewer) => (
-                    <li
-                      key={reviewer}
-                      className="flex justify-start gap-4 items-center w-full"
-                    >
-                      <input
-                        name="reviewers"
-                        type="checkbox"
-                        id={reviewer}
-                        value={reviewer}
-                        onChange={handleCheckboxChange}
-                        style={{ width: "20px" }}
-                      />
-                      <label className="w-32" htmlFor={reviewer}>
-                        {reviewer}
-                      </label>
-                    </li>
-                  ))}
-                {formData.category === "B" &&
-                  catBReviewers.map((reviewer) => (
-                    <li
-                      key={reviewer}
-                      className="flex justify-start gap-4 items-center w-full"
-                    >
-                      <input
-                        name="reviewers"
-                        type="checkbox"
-                        id={reviewer}
-                        value={reviewer}
-                        onChange={handleCheckboxChange}
-                        style={{ width: "20px" }}
-                      />
-                      <label className="w-32" htmlFor={reviewer}>
-                        {reviewer}
-                      </label>
-                    </li>
-                  ))}
-                {formData.category === "C" &&
-                  catCReviewers.map((reviewer) => (
-                    <li
-                      key={reviewer}
-                      className="flex justify-start gap-4 items-center w-full"
-                    >
-                      <input
-                        name="reviewers"
-                        type="checkbox"
-                        id={reviewer}
-                        value={reviewer}
-                        onChange={handleCheckboxChange}
-                        style={{ width: "20px" }}
-                      />
-                      <label className="w-32" htmlFor={reviewer}>
-                        {reviewer}
-                      </label>
-                    </li>
-                  ))}
-                {formData.category === "D" &&
-                  catDReviewers.map((reviewer) => (
-                    <li
-                      key={reviewer}
-                      className="flex justify-start gap-4 items-center w-full"
-                    >
-                      <input
-                        name="reviewers"
-                        type="checkbox"
-                        id={reviewer}
-                        value={reviewer}
-                        onChange={handleCheckboxChange}
-                        style={{ width: "20px" }}
-                      />
-                      <label className="w-32" htmlFor={reviewer}>
-                        {reviewer}
-                      </label>
-                    </li>
-                  ))}
+              <ul className="flex justify-start gap-3">
+                {catReviewers[formData.category].map((reviewer) => (
+                  <li key={reviewer} className="flex justify-start gap-1 items-center">
+                    <Checkbox
+                      name="reviewers"
+                      id={reviewer}
+                      value={reviewer}
+                      onChange={handleCheckboxChange}
+                      inputProps={{ 'aria-label': reviewer }}
+                    />
+                    <label className="w-32" htmlFor={reviewer}>
+                      {reviewer}
+                    </label>
+                    {(reviewer === 'ASSOCIATE DEAN' ) && (checkedValues.includes('ASSOCIATE DEAN')) && (
+                      <FormControl>
+                        <Select
+                          labelId="sub-role-label"
+                          id="sub-role-select"
+                          value= {subRole || 'Select'}
+                          onChange={handleSubRoleChange}
+                        >
+                          <MenuItem value="Select">Select</MenuItem>
+                          <MenuItem value="SUB_ROLE_1">Hotel Management</MenuItem>
+                          <MenuItem value="SUB_ROLE_2">Continuing Education and Outreach Activities</MenuItem>
+                          <MenuItem value="SUB_ROLE_3">International Relations and Alumni Affairs</MenuItem>
+                          <MenuItem value="SUB_ROLE_4">Infrastructure</MenuItem>
+                        </Select>
+                      </FormControl>
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
-            {(formData.category === "B" || formData.category === "C") && (
+
+            {(formData.category === "B" || formData.category === "C" || formData.category === "D") && (
               <>
                 <label>Payment*:</label>
 

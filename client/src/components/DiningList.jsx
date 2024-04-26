@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import Button from "@mui/material/Button";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
@@ -262,7 +263,7 @@ export default function DiningList({
               {checked.length > 0 && (
                 <div className="flex">
                   <IconButton edge="end" aria-label="comments">
-                    <DeleteIcon className="text-gray-300" />
+                    <DeleteIcon className="text-gray-600" />
                   </IconButton>
                 </div>
               )}
@@ -294,7 +295,7 @@ export default function DiningList({
                   <div className="w-[30%]">{status.toUpperCase()}</div>
                   <div className="w-[34%]">
                     <IconButton edge="end" aria-label="insert">
-                      <VisibilityIcon
+                      <InsertDriveFileIcon
                         onClick={() => {
                           status === "pending"
                             ? navigate(`${record._id}`)

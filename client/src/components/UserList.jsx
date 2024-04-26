@@ -46,7 +46,7 @@ export default function UserList() {
     Name: "name",
     Email: "email",
     Contact: "contact",
-    Role: "Role"
+    Role: "role"
   };
 
   const toggleDropdown = () => {

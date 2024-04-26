@@ -5,7 +5,6 @@ import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-
 import { getDate } from "../utils/handleDate";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -16,6 +15,7 @@ import TextField from "@mui/material/TextField";
 import DownloadIcon from "@mui/icons-material/Download";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import http from "../utils/httpService";
 import { useSelector } from "react-redux";
 
@@ -37,7 +37,7 @@ export default function AdminRecordList({ status = "pending" }) {
     Category: "category",
     "Arrival Date": "arrivalDate",
     "Departure Date": "departureDate",
-    "Room Type": "roomType",
+    "Room Type": "roomType"
   };
 
   const navigate = useNavigate();
@@ -396,7 +396,7 @@ export default function AdminRecordList({ status = "pending" }) {
                       </IconButton>
                     )}
                     <IconButton edge="end" aria-label="insert">
-                      <VisibilityIcon
+                      <InsertDriveFileIcon
                         onClick={() => {
                           status === "approved"
                             ? navigate(`${record._id}`)
