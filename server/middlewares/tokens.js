@@ -5,7 +5,7 @@ export const checkAuth = async (req, res, next) => {
   try {
     const accessToken = req.headers.accesstoken.split(" ")[1];
     const refreshToken = req.headers.refreshtoken.split(" ")[1];
-    console.log(accessToken);
+    // console.log(accessToken);
     if (accessToken && refreshToken) {
       var decodedToken;
       try {
@@ -15,9 +15,9 @@ export const checkAuth = async (req, res, next) => {
           .status(401)
           .json({ message: "Invalid credentials! Please login again" });
       }
-      console.log("Decoded Token = ", decodedToken);
+      // console.log("Decoded Token = ", decodedToken);
 
-      console.log("Date = ", Date.now() / 1000);
+      // console.log("Date = ", Date.now() / 1000);
       if (decodedToken.exp <= Date.now() / 1000) {
         var decodedToken;
         try {

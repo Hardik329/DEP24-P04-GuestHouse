@@ -25,7 +25,7 @@ export const generateFilledPDF = async (formData) => {
     const form = pdfDoc.getForm();
     const pages = pdfDoc.getPages();
     const firstPage = pages[0];
-
+    const secondPage = pages[1];
     // Example for a few fields, you'll need to add the rest following this pattern
     firstPage.drawText(formData.guestName, {
       x: 165,
@@ -93,6 +93,20 @@ export const generateFilledPDF = async (formData) => {
 
     var tick = "P";
     if (formData.category === "A") {
+      //check for the approvals in the  reviewers section
+      if(formData.reviewers){
+        formData.reviewers.forEach((reviewer) => {
+          if (reviewer.status === "APPROVED") {
+            secondPage.drawText(reviewer.role, {
+              x: 55,
+              y: 510,
+              size: 12,
+              font: ubuntuFont,
+              color: rgb(0, 0, 0),
+            })
+          }
+        });
+      }
       firstPage.drawText(tick, {
         x: 125,
         y: 510,
@@ -103,6 +117,19 @@ export const generateFilledPDF = async (formData) => {
       });
     }
     if (formData.category === "B") {
+      if(formData.reviewers){
+        formData.reviewers.forEach((reviewer) => {
+          if (reviewer.status === "APPROVED") {
+            secondPage.drawText(reviewer.role, {
+              x: 55,
+              y: 510,
+              size: 12,
+              font: ubuntuFont,
+              color: rgb(0, 0, 0),
+            })
+          }
+        });
+      }
       firstPage.drawText(tick, {
         x: 255,
         y: 510,
@@ -113,6 +140,19 @@ export const generateFilledPDF = async (formData) => {
       });
     }
     if (formData.category === "C") {
+      if(formData.reviewers){
+        formData.reviewers.forEach((reviewer) => {
+          if (reviewer.status === "APPROVED") {
+            secondPage.drawText(reviewer.role, {
+              x: 55,
+              y: 510,
+              size: 12,
+              font: ubuntuFont,
+              color: rgb(0, 0, 0),
+            })
+          }
+        });
+      }
       firstPage.drawText(tick, {
         x: 385,
         y: 510,
@@ -123,6 +163,19 @@ export const generateFilledPDF = async (formData) => {
       });
     }
     if (formData.category === "D") {
+      if(formData.reviewers){
+        formData.reviewers.forEach((reviewer) => {
+          if (reviewer.status === "APPROVED") {
+            secondPage.drawText(reviewer.role, {
+              x: 55,
+              y: 510,
+              size: 12,
+              font: ubuntuFont,
+              color: rgb(0, 0, 0),
+            })
+          }
+        });
+      }
       firstPage.drawText(tick, {
         x: 515,
         y: 510,

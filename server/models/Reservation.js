@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 // import Counter from "./Counter.js";
-
+import Counter from "./Counter.js";
 const reservationSchema = new mongoose.Schema(
   {
     srno: {
@@ -192,23 +192,23 @@ const reservationSchema = new mongoose.Schema(
 // });
 
 //another one when we create a new object
-// reservationSchema.pre("save", async function (next) {
-//   // Get the next sequence value
-//   try {
-//     if (this.isNew) {
-//       const nextSequence = await Counter.getNextSequence("reservation");
-//       this.srno = nextSequence;
-//       console.log("Got the next sequence value: ", this.srno);
-//     }
-//     console.log("saving the reservation");
-//     next();
-//   } catch (e) {
-//     next(e);
-//     console.log(e);
-//   }
-//   // Send notification to admin
-//   // sendNotification(ADMIN_EMAIL, "A new reservation has been created");
-// });
+reservationSchema.pre("save", async function (next) {
+  // Get the next sequence value
+  try {
+    if (this.isNew) {
+      const nextSequence = await Counter.getNextSequence("reservation");
+      this.srno = nextSequence;
+      console.log("Got the next sequence value: ", this.srno);
+    }
+    console.log("saving the reservation");
+    next();
+  } catch (e) {
+    next(e);
+    console.log(e);
+  }
+  // Send notification to admin
+  // sendNotification(ADMIN_EMAIL, "A new reservation has been created");
+});
 // reservationSchema.plugin(autoIncrement.plugin, {
 //   model: "Reservation",
 //   field: "srno",
