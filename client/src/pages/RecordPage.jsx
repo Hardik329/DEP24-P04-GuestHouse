@@ -168,7 +168,8 @@ export default function RecordPage() {
           <hr />
           <div className="flex justify-between px-32 pb-5">
             <p className="p-0 text-xl font-semibold">Room Fare:</p>
-            <p className="p-0 text-lg">Rs. {totalRoomFare}/- only</p>
+            {/* <p className="p-0 text-lg">Rs. {totalRoomFare}/- only</p> */}
+            <p className="p-0 text-lg">Rs. {userRecord.payment.amount}/- only</p>
           </div>
           <div className="flex justify-between px-32 pb-5">
             <p className="p-0 text-xl font-semibold">Dining Fare:</p>
@@ -176,7 +177,7 @@ export default function RecordPage() {
           </div>
           <div className="flex justify-between px-32 pb-5">
             <p className="p-0 text-xl font-semibold">Total Amount:</p>
-            <p className="p-0 text-lg">Rs. {totalFare}/- only</p>
+            <p className="p-0 text-lg">Rs. {userRecord.payment.amount+totalDiningFare}/- only</p>
           </div>
         </div>
       </div>
