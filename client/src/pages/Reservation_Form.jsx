@@ -98,6 +98,13 @@ function ReservationForm() {
     category: /[\s\S]*/,
   };
 
+  const categoryInfo = {
+    "A" : "Category A",
+    "B" : "Category B",
+    "C" : "Category C (For student's family only their parents are allowed)",
+    "D" : "Category D (Guest and Department invited, etc.)"
+  }
+
   const catAReviewers = ["DIRECTOR", "REGISTRAR", "ASSOCIATE DEAN", "DEAN"];
 
   const catBReviewers = ["HOD", "DEAN", "ASSOCIATE DEAN", "REGISTRAR"];
@@ -137,7 +144,8 @@ function ReservationForm() {
   }
 
   const [checkedValues, setCheckedValues] = useState([]);
-  console.log(checkedValues);
+  // console.log(checkedValues);
+  // console.log(formData.category);
   const handleChange = (e) => {
     const { name, value } = e.target;
     if(name==='category') setCheckedValues([])
@@ -477,7 +485,7 @@ function ReservationForm() {
             <label>
               Category*: (Refer to{" "}
               <span
-                className="underline cursor-pointer"
+                className="underline cursor-pointer text-blue-800"
                 onClick={() => {
                   setShowCat(true);
                 }}
@@ -493,18 +501,11 @@ function ReservationForm() {
               onChange={handleChange}
               value={formData.category}
             >
-              <option className="" value="A">
-                Category A
-              </option>
-              <option className="" value="B">
-                Category B
-              </option>
-              <option className="" value="C">
-                Category C
-              </option>
-              <option className="" value="D">
-                Category D
-              </option>
+              {Object.entries(categoryInfo).map(([categoryCode, categoryName]) => (
+                <option key={categoryCode} value={categoryCode}>
+                  {categoryName}
+                </option>
+              ))}
             </select>
 
             <div className="form-group">
@@ -640,7 +641,7 @@ function ReservationForm() {
           <div>
             By clicking on Submit, you hereby agree to the{" "}
             <span
-              className="underline cursor-pointer"
+              className="underline cursor-pointer text-blue-800"
               onClick={() => {
                 setShowTC(true);
               }}

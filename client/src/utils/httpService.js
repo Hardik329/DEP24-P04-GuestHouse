@@ -13,13 +13,13 @@ axios.interceptors.request.use((config) => {
   config.baseURL = BASE_URL;
   config.headers.accessToken = 'Bearer '+store.getState().user.accessToken;
   config.headers.refreshToken = 'Bearer '+store.getState().user.refreshToken;
-  console.log(config.headers);
+  // console.log(config.headers);
   return config;
 });
 
 axios.interceptors.response.use((res)=>{
   toast.success(res.data?.message)
-  console.log(res)
+  // console.log(res)
   return res;
 }, (error) => {
   const expectedError =
