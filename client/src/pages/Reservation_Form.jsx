@@ -559,6 +559,46 @@ function ReservationForm() {
                         </Select>
                       </FormControl>
                     )}
+                    {(reviewer === 'HOD' ) && (checkedValues.includes('HOD')) && (
+                      <FormControl>
+                        <Select
+                          labelId="sub-role-label"
+                          id="sub-role-select"
+                          value= {subRole || 'Select'}
+                          onChange={handleSubRoleChange}
+                        >
+                          <MenuItem value="Select">Select</MenuItem>
+                          <MenuItem value="SUB_ROLE_1">Department of Computer Science</MenuItem>
+                          <MenuItem value="SUB_ROLE_2">Department of Electrical Engineering</MenuItem>
+                          <MenuItem value="SUB_ROLE_3">Mechanical Engineering</MenuItem>
+                          <MenuItem value="SUB_ROLE_4">Department of Chemistry</MenuItem>
+                          <MenuItem value="SUB_ROLE_5">Department of Mathematics</MenuItem>
+                          <MenuItem value="SUB_ROLE_6">Department of Physics</MenuItem>
+                          <MenuItem value="SUB_ROLE_7">Department of Humanities and Social Sciences</MenuItem>
+                          <MenuItem value="SUB_ROLE_8">Department of Biomedical Engineering</MenuItem>
+                          <MenuItem value="SUB_ROLE_9">Department of Civil Engineering</MenuItem>
+                          <MenuItem value="SUB_ROLE_10">Department of Chemical Engineering</MenuItem>
+                          <MenuItem value="SUB_ROLE_11">Department of Metallurgical & Materials Engineering</MenuItem>
+                        </Select>
+                      </FormControl>
+                    )}
+                    {(reviewer === 'DEAN' ) && (checkedValues.includes('DEAN')) && (
+                      <FormControl>
+                        <Select
+                          labelId="sub-role-label"
+                          id="sub-role-select"
+                          value= {subRole || 'Select'}
+                          onChange={handleSubRoleChange}
+                        >
+                          <MenuItem value="Select">Select</MenuItem>
+                          <MenuItem value="SUB_ROLE_1">Dean (Research and Development)</MenuItem>
+                          <MenuItem value="SUB_ROLE_2">Dean (Student Affairs)</MenuItem>
+                          <MenuItem value="SUB_ROLE_3">Dean (Faculty Affairs & Administration)</MenuItem>
+                          <MenuItem value="SUB_ROLE_4">Dean (Under Graduate Studies)</MenuItem>
+                          <MenuItem value="SUB_ROLE_5">Dean (Post Graduate & Research)</MenuItem>
+                        </Select>
+                      </FormControl>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -175,12 +175,29 @@ function App() {
             element={
               <Auth
                 allowedRoles={[
-                  "HOD",
+                  "HOD COMPUTER SCIENCE",
+                  "HOD ELECTRICAL ENGINEERING",
+                  "HOD MECHANICAL ENGINEERING",
+                  "HOD CHEMISTRY",
+                  "HOD MATHEMATICS",
+                  "HOD PHYSICS",
+                  "HOD HUMANITIES AND SOCIAL SCIENCES",
+                  "HOD BIOMEDICAL ENGINEERING",
+                  "HOD CIVIL ENGINEERING",
+                  "HOD CHEMICAL ENGINEERING",
+                  "HOD METALLURGICAL AND MATERIALS ENGINEERING",
                   "CHAIRMAN",
                   "DIRECTOR",
-                  "DEAN",
+                  "DEAN RESEARCH AND DEVELOPMENT",
+                  "DEAN STUDENT AFFAIRS",
+                  "DEAN FACULTY AFFAIRS AND ADMINISTRATION",
+                  "DEAN UNDER GRADUATE STUDIES",
+                  "DEAN POST GRADUATE STUDIES",
                   "REGISTRAR",
-                  "ASSOCIATE DEAN",
+                  "ASSOCIATE DEAN HOSTEL MANAGEMENT",
+                  "ASSOCIATE DEAN INTERNATIONAL RELATIONS AND ALUMNI AFFAIRS",
+                  "ASSOCIATE DEAN CONTINUING EDUCATION AND OUTREACH ACTIVITIES",
+                  "ASSOCIATE DEAN INFRASTRUCTURE",
                 ]}
               />
             }
