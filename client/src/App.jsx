@@ -60,11 +60,15 @@ function App() {
 
             <Route path="reservation" element={<Reservation />}>
               <Route path="" element={<AdminRecordList status="approved" />} />
-              <Route path=":id" element={<AdminRecordPage />} />
+              <Route path="pending-requests" element={<AdminRecordList />} />
+              <Route path="reservation-form" element={<ReservationForm />} />
+
 
               <Route path="users" element={<UserList />} />
-              <Route path=":id/rooms" element={<RoomBooking />} />
               <Route path="rooms" element={<AddRoom />} />
+              <Route path=":id/rooms" element={<RoomBooking />} />
+              <Route path=":id" element={<AdminRecordPage />} />
+
             </Route>
           </Route>
 

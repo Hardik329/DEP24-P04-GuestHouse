@@ -180,7 +180,7 @@ export default function RecordPage() {
           </div>
         </div>
       </div>
-      <div className='col-span-5 md:flex-col overflow-auto md:gap-8 shadow-lg flex p-5 gap-2 m-9 font-["Dosis"] bg-[rgba(255,255,255,0.5)] rounded-lg'>
+      <div className='col-span-5 md:flex-col overflow-auto md:gap-8 shadow-lg flex p-5 justify-betrween m-9 font-["Dosis"] bg-[rgba(255,255,255,0.5)] rounded-lg'>
         <div>
           <div className="text-2xl font-semibold font-['Dosis'] px-5">
             Status

@@ -4,7 +4,6 @@ import List from "@mui/material/List";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import { useNavigate } from "react-router-dom";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import { getDate } from "../utils/handleDate";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
@@ -281,7 +280,7 @@ export default function AdminRecordList({ status = "pending" }) {
               Room Type
             </div>
             <div className="flex justify-evenly gap-2 w-[10%]">
-              {user.role !== "ADMIN" && checked.length > 0 && (
+              { checked.length > 0 && (
                 <div className="flex">
                   <IconButton edge="end" aria-label="comments">
                     <DoneIcon
@@ -358,7 +357,7 @@ export default function AdminRecordList({ status = "pending" }) {
                   <div className="w-[10%]">{getDate(record.departureDate)}</div>
                   <div className="w-[10%]">{record.roomType}</div>
                   <div className="flex justify-evenly gap-2 w-[10%]">
-                    {user.role !== "ADMIN" && status !== "approved" && (
+                    { status !== "approved" && (
                       <IconButton edge="end" aria-label="comments">
                         <DoneIcon
                           className="text-green-500 h-5"
@@ -380,7 +379,7 @@ export default function AdminRecordList({ status = "pending" }) {
                         />
                       </IconButton>
                     )}
-                    {user.role !== "ADMIN" && status !== "rejected" && (
+                    { status !== "rejected" && (
                       <IconButton edge="end" aria-label="comments">
                         <CloseIcon
                           className="text-red-500 h-5"

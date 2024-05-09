@@ -152,7 +152,7 @@ export default function AddRoom() {
 							<h3>{room.roomNumber}</h3>
 							{room.bookings.length > 0 && (
 								<div
-									className={`booking-info hidden bg-black bg-opacity-80 text-white p-2.5 rounded absolute top-full mt-2.5 left-0 w-full transition-opacity duration-300 ease z-50 ${
+									className={`booking-info overflow-y-auto max-h-48 hidden bg-black bg-opacity-80 text-white p-2.5 rounded absolute top-full  left-0 w-full transition-opacity duration-300 ease z-50 ${
 										hoverOverRoom[index] ? "room-booking-info-visible" : ""
 									}`}>
 									{room.bookings.map((booking) => (
@@ -184,7 +184,7 @@ export default function AddRoom() {
 			</div>
             {rooms.length === 0 &&
                     <div className="mt-5 font-semibold text-xl flex justify-center w-full">
-                        ...Loading
+                        Loading...
                     </div>
 			}
 			{rooms.length > 0 && <div className="w-full flex justify-center items-center">

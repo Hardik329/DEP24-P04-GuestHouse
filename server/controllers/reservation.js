@@ -303,14 +303,23 @@ export async function approveReservation(req, res) {
         .status(403)
         .json({ message: "You are not authorized to perform this action" });
     }
-
+    let found = false;
     reservation.reviewers = reservation.reviewers.map((reviewer) => {
       if (reviewer.role === req.user.role) {
+        found = true;
         reviewer.status = "APPROVED";
         if (req.body.comments) reviewer.comments = req.body.comments;
       }
       return reviewer;
     });
+
+    if (!found && req.user.role === "ADMIN") {
+      reservation.reviewers.push({
+        role: req.user.role,
+        status: "APPROVED",
+        comments: req.body.comments || "",
+      });
+    }
     let initStatus = reservation.status;
     reservation = await updateReservationStatus(reservation);
     console.log(reservation);
@@ -367,6 +376,14 @@ export async function rejectReservation(req, res) {
       }
       return reviewer;
     });
+
+    if (!found && req.user.role === "ADMIN") {
+      reservation.reviewers.push({
+        role: req.user.role,
+        status: "REJECTED",
+        comments: req.body.comments || "",
+      });
+    }
     let initStatus = reservation.status;
     reservation = await updateReservationStatus(reservation);
     if (initStatus !== reservation.status) {
@@ -480,7 +497,10 @@ export const getPendingReservations = async (req, res) => {
       });
       res.status(200).json(reservations);
     } else {
-      res.status(200).json([]);
+      const reservations = await Reservation.find({ status: "PENDING" }).sort({
+        createdAt: -1,
+      });
+      res.status(200).json(reservations);
     }
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -600,6 +620,11 @@ const updateReservationStatus = async (reservation) => {
       }
     }
   });
+  if (adminStatus === "APPROVED") {
+    isApproved = true;
+  } else if (adminStatus === "REJECTED") {
+    isRejected = true;
+  }
 
   if (isRejected) {
     reservation.status = "REJECTED";

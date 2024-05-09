@@ -4,7 +4,6 @@ import Checkbox from "@mui/material/Checkbox";
 import { useSelector, useDispatch } from "react-redux";
 import { privateRequest } from "../utils/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
-import VisibilityIcon from '@mui/icons-material/Visibility';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";

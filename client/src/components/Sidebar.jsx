@@ -17,7 +17,13 @@ const Sidebar = () => {
 
   const content =
     user.role === "ADMIN"
-      ? ["Approved Requests", "Users", "Rooms"]
+      ? [
+          "Approved Requests",
+          "Pending Requests",
+          "Users",
+          "Rooms",
+          "Reservation Form",
+        ]
       : user.role === "USER"
       ? [
           "Approved Requests",
@@ -52,9 +58,9 @@ const Sidebar = () => {
       </div>
       <hr></hr>
       <div
-        className={
-          `text-white ${styles.sidebar} ${!isOpen ? styles.closed : ""}`
-        }
+        className={`text-white ${styles.sidebar} ${
+          !isOpen ? styles.closed : ""
+        }`}
         style={{
           transform: isOpen ? "translateX(0)" : "translateX(-100%)",
           transition: "all 0.2s",

@@ -79,7 +79,7 @@ const Workflow = ({ id, userRecord, reviewers, setReviewers }) => {
           </div>
         )}
         {user.role !== "USER" &&
-          user.role !== "ADMIN" &&
+          // user.role !== "ADMIN" &&
           user.role !== "CASHIER" && (
             <>
               <button
@@ -147,7 +147,7 @@ const Workflow = ({ id, userRecord, reviewers, setReviewers }) => {
       </div>
       <div className="w-full">
         {user.role !== "USER" &&
-          user.role !== "ADMIN" &&
+          // user.role !== "ADMIN" &&
           user.role !== "CASHIER" && (
             <textarea
               // disabled={user.role !== "ADMIN"}

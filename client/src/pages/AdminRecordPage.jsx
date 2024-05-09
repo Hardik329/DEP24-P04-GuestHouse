@@ -122,8 +122,6 @@ export default function AdminRecordPage() {
   if (status === "Error") return <Navigate to="/404" />;
   else if (status === "Loading") return <div className="flex h-full w-full text-xl font-semibold items-center justify-center">Loading...</div>;
 
-  // useEffect(() => {
-  // }, []);
 
   return (
     <>
@@ -206,7 +204,7 @@ export default function AdminRecordPage() {
           </div>
         </div>
       </div>
-      <div className='col-span-5 md:flex-col overflow-auto shadow-lg flex justify-around p-5  gap-4 m-9 font-["Dosis"] bg-[rgba(255,255,255,0.5)] rounded-lg'>
+      <div className='col-span-5 md:flex-col overflow-auto shadow-lg flex justify-between p-5  gap-4 m-9 font-["Dosis"] bg-[rgba(255,255,255,0.5)] rounded-lg'>
         
           <div>
             <div className="text-2xl font-semibold font-['Dosis'] px-5">

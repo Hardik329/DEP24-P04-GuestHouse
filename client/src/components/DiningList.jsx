@@ -1,22 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import Button from "@mui/material/Button";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import TextField from "@mui/material/TextField";
 import {useSelector, useDispatch} from "react-redux";
-import { useLocation } from "react-router-dom";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import Slider from "@mui/material/Slider";
