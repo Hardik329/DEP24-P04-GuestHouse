@@ -727,6 +727,11 @@ export const deleteRoom = async (req, res) => {
       return res.status(404).json({ message: "Room not found" });
     }
 
+    if(deletedRoom.bookings?.length > 0)
+      return res
+        .status(404)
+        .json({ message: "Room is occupied" });
+
     res
       .status(200)
       .json({ message: "Room deleted successfully", room: deletedRoom });

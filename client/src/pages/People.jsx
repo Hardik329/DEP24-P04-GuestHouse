@@ -42,7 +42,7 @@ const People = () => {
   ];
 
   return (
-    <div className='people w-5/6 flex flex-wrap justify-around gap-18 gap-y-12 my-10'>
+    <div className='people w-5/6 flex flex-wrap justify-around my-10'>
       {users.map((item, index) => {
         return <UserProfileBox key={"user-" + index} user={item} />;
       })}
